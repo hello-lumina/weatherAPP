@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input placeholder='Wyszukaj lokalizację...' v-model="writingLocation" @click='askForLocationPermission'/>
+        <input placeholder='Wyszukaj lokalizację...' v-model='writingLocation' @click='askForLocationPermission'/>
         <button @click="search">Szukaj</button>
             <div v-if="searchLocation != null">
                 <p>Wprowadzona lokalizacja to: {{ searchLocation }}</p>
@@ -40,6 +40,6 @@
                        };
     </script>
 
-        <style scoped>
-            /* Stylizacja komponentu, jeśli jest potrzebna */
+        <style>
+            /* Cokolwiek, aby działało! */
         </style>

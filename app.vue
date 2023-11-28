@@ -15,5 +15,5 @@
 </script>
 
 <style>
-/* Opcjonalne: style dla App.vue */
+  /* Cokolwiek, aby działało! */
 </style>
