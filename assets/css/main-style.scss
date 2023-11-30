@@ -101,7 +101,7 @@ body {
 
 .location {
   position: relative;
-  height: 200px;
+  height: 150px;
 
   &::after {
     content: "";
@@ -212,13 +212,16 @@ body {
 
 .card {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
-
   border-radius: var(--radius-md);
   padding: var(--spasm);
   display: flex;
   align-items: center;
   flex-direction: column;
   background-color: var(--color-white);
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 5px 0px;
+  }
 }
 
 .week {
