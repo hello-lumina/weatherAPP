@@ -72,7 +72,7 @@
         </div>
       </div>
 
-      <div class="location">
+      <div class="location margin-top-md">
         <img class="location__image"
              src="https://plus.unsplash.com/premium_photo-1682657000431-84ea0dcf361c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fG5ldyUyMHlvcmslMjBjaXR5fGVufDB8fDB8fHww"
              alt="Weather App">

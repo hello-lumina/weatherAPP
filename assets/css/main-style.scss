@@ -55,6 +55,12 @@ body {
     display: grid;
     place-items: center;
     cursor: pointer;
+
+    &:hover {
+      svg {
+        transform: scale(1.2);
+      }
+    }
   }
 }
 
@@ -85,7 +91,8 @@ body {
     align-items: center;
 
     p {
-      margin: 0;
+      font-size: 16px;
+      margin: var(--space-xxxxs) 0;
       color: var(--color-contrast);
     }
   }
@@ -155,6 +162,7 @@ body {
     margin: 0;
     cursor: pointer;
     transition: all .3s ease-out;
+
     &:hover {
       color: var(--color-contrast-higher);
     }
@@ -181,7 +189,8 @@ body {
     color: var(--color-contrast-higher);
     cursor: pointer;
     transition: all .3s ease-out;
-    &:hover{
+
+    &:hover {
       background-color: var(--color-contrast-higher);
       color: var(--color-white);
     }
