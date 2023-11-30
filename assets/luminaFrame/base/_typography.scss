@@ -1,24 +1,24 @@
 @font-face {
   font-family: 'Test Light';
-  src: url('~assets/fonts/GTEestiProText-Thin.ttf') format("truetype");
+  src: url('~/assets/fonts/GTEestiProText-Thin.ttf') format("truetype");
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Test Regular';
-  src: url('~assets/fonts/GTEestiProText-Regular.ttf') format("truetype");
+  src: url('~/assets/fonts/GTEestiProText-Regular.ttf') format("truetype");
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Test Medium';
-  src: url('~assets/fonts/GTEestiProText-Medium.ttf') format("truetype");
+  src: url('~/assets/fonts/GTEestiProText-Medium.ttf') format("truetype");
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Test Bold';
-  src: url('~assets/fonts/GTEestiProDisplay-Bold.ttf') format("truetype");
+  src: url('~/assets/fonts/GTEestiProDisplay-Bold.ttf') format("truetype");
   font-display: swap;
 }
 
@@ -74,7 +74,6 @@ p {
 
 h1 {
   font-size: calc(70px + (140 - 70) * ((100vw - 320px) / (1900 - 360)));
-  font-family: var(--font-primary-light);
   letter-spacing: -4px;
 }
 
