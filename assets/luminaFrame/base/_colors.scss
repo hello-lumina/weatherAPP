@@ -37,16 +37,16 @@
   @include defineColorHSL(--color-error-lighter, 342, 89%, 62%);
 
   // background
-  @include defineColorHSL(--color-bg-darker, 0, 0%, 0%);
-  @include defineColorHSL(--color-bg-dark, 0, 0%, 4%);
-  @include defineColorHSL(--color-bg, 0, 0%, 9%);
-  @include defineColorHSL(--color-bg-light, 0, 0%, 14%);
-  @include defineColorHSL(--color-bg-lighter, 0, 0%, 24%);
+  @include defineColorHSL(--color-bg-darker, 240, 7%, 70%);
+  @include defineColorHSL(--color-bg-dark, 240, 7%, 87%);
+  @include defineColorHSL(--color-bg, 240, 7%, 94%);
+  @include defineColorHSL(--color-bg-light, 240, 7%, 97%);
+  @include defineColorHSL(--color-bg-lighter, 240, 7%, 99%);
 
   // color contrasts
-  @include defineColorHSL(--color-contrast-lower,  0, 0%, 0%);
-  @include defineColorHSL(--color-contrast-low,  0, 0%, 4%);
-  @include defineColorHSL(--color-contrast, 0, 0%, 9%);
-  @include defineColorHSL(--color-contrast-high,  0, 0%, 16%);
-  @include defineColorHSL(--color-contrast-higher,  0, 0%, 24%);
+  @include defineColorHSL(--color-contrast-lower,  0, 0%, 25%);
+  @include defineColorHSL(--color-contrast-low,  0, 0%, 20%);
+  @include defineColorHSL(--color-contrast, 0, 0%, 15%);
+  @include defineColorHSL(--color-contrast-high,  0, 0%, 10%);
+  @include defineColorHSL(--color-contrast-higher,  0, 0%, 5%);
 }
