@@ -6,7 +6,7 @@
                 <p>Wprowadzona lokalizacja to: {{ searchLocation }}</p>
                     <p v-if="weatherInfo">Pogoda w tym obszarze:
                         <ul v-if="weatherInfo">
-                            <li>Temperatura: {{ weatherInfo.current.temp_c}}°C</li>
+                            <li>Temperatura: {{ weatherInfo.current.temp_c }}°C</li>
                             <li>Wilgotność powietrza: {{ weatherInfo.current.humidity }}%</li>
                             <li>Wiatr: {{ weatherInfo.current.wind_kph }}km/h</li>
                             <li>Ciśnienie: {{ weatherInfo.current.pressure_mb }}mb</li>
