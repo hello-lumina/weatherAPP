@@ -1,21 +1,24 @@
 @font-face {
   font-family: 'Test Light';
-  src: url('~assets/fonts/GTEestiProText-Thin.ttf') format("truetype");
+  src: url('~/assets/fonts/GTEestiProText-Thin.ttf') format("truetype");
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Test Regular';
-  src: url('~assets/fonts/GTEestiProText-Regular.ttf') format("truetype");
+  src: url('~/assets/fonts/GTEestiProText-Regular.ttf') format("truetype");
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Test Medium';
-  src: url('~assets/fonts/GTEestiProText-Medium.ttf') format("truetype");
+  src: url('~/assets/fonts/GTEestiProText-Medium.ttf') format("truetype");
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Test Bold';
-  src: url('~assets/fonts/GTEestiProDisplay-Bold.ttf') format("truetype");
+  src: url('~/assets/fonts/GTEestiProDisplay-Bold.ttf') format("truetype");
   font-display: swap;
 }
 
@@ -26,9 +29,6 @@
   --font-primary-medium: 'Test Medium', 'Helvetica', 'Arial', sans-serif;
   --font-bold: 'Test Bold', sans-serif;
 
-  //--font-primary: 'Poppins Regular', 'Helvetica', 'Arial', sans-serif;
-  //--font-primary-light: 'Poppins Light', 'Helvetica', 'Arial', sans-serif;
-  //--font-primary-medium: 'Poppins Medium', 'Helvetica', 'Arial', sans-serif;
   --body-font-weight: 400;
   --text-base-size: 10px;
   --text-scale-ratio: 1.55;
@@ -56,51 +56,43 @@
 
 body {
   font-family: var(--font-primary, sans-serif);
-  //color: var(--color-contrast, hsl(0, 0%, 40%));
   font-weight: var(--body-font-weight, normal);
   line-height: var(--body-line-height);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  //color: var(--color-contrast-higher, hsl(0, 0%, 15%));
+  color: var(--color-contrast-higher, hsl(0, 0%, 15%));
   line-height: var(--heading-line-height, 1.2);
   font-weight: var(--heading-front-weight, 400);
   margin: 1rem 0;
   font-family: var(--font-primary-medium);
 }
 
-p{
-  font-size: calc(14px + (22 - 14  ) * ((100vw - 320px) / (1900 - 360)));
+p {
+  font-size: calc(14px + (22 - 14) * ((100vw - 320px) / (1900 - 360)));
 }
 
 h1 {
-  font-size: calc(70px + (140 - 70  ) * ((100vw - 320px) / (1900 - 360)));
-  //font-size: var(--text-xxxl, 2rem);
-  font-family: var(--font-primary-light);
+  font-size: calc(70px + (140 - 70) * ((100vw - 320px) / (1900 - 360)));
   letter-spacing: -4px;
 }
 
 h2 {
   font-size: calc(45px + (85 - 45) * ((100vw - 320px) / (1900 - 360)));
-  //font-size: var(--text-xxl, 1.75rem);
-  //letter-spacing: -4px;
 }
 
 h3 {
   font-size: calc(30px + (60 - 30) * ((100vw - 320px) / (1900 - 360)));
-  //font-size: var(--text-xl, 1.375rem);
 }
 
 h4 {
   font-size: calc(18px + (28 - 18) * ((100vw - 320px) / (1900 - 360)));
   font-family: var(--font-primary);
   line-height: 1.9;
-  //font-size: var(--text-lg, 1.125rem);
 }
 
 h5 {
   font-size: calc(16px + (22 - 16) * ((100vw - 320px) / (1900 - 360)));
-  //font-size: var(--text-md, 1.075rem);
 }
 
 h6 {
@@ -109,14 +101,12 @@ h6 {
   white-space: break-spaces;
 }
 
-.pixelated{
-  font-family: var(--font-pixelated);
-  font-size: 1.1em;
-  line-height: 1;
-  //font-style: italic;
-}
 
-.text-stroke{
+.text-stroke {
   -webkit-text-stroke: 1px var(--color-white);
   color: transparent;
+}
+
+.bold {
+  font-weight: 600;
 }

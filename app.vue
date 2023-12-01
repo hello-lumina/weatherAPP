@@ -1,6 +1,6 @@
 <template>
-  <div id="SearchBar">
-
+  <div>
+    <Foo/>
   </div>
 </template>
 
