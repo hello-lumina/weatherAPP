@@ -2,8 +2,6 @@
   <div class="grid gap-md">
     <SearchBar/>
       <div class="col-9@md right">
-        <TodayWeek/>
-        <Higlights/>
       </div>
   </div>
 </template>
