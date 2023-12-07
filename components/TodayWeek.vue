@@ -79,3 +79,95 @@
         </div>
     </div>
 </template>
+
+<style>
+.right {
+  background-color: var(--color-bg);
+  padding: var(--space-lg);
+       }
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+        }
+       
+.nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+      }
+
+.nav .nav__item {
+    line-height: 1.4;
+    color: var(--color-bg-darker);
+    margin: 0;
+    cursor: pointer;
+    transition: all .3s ease-out; 
+            }
+
+.nav .nav__item:hover {
+    color: var(--color-contrast-higher);
+                 }
+
+.nav .nav__item.active {
+    color: var(--color-contrast-higher);
+    border-bottom: 2px solid var(--color-contrast-higher);
+                  }
+
+.units {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+       }
+
+.units .units__item {
+    background-color: var(--color-white);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    width: 45px;
+    height: 45px;
+    color: var(--color-contrast-higher);
+    cursor: pointer;
+    transition: all .3s ease-out;
+             }
+
+.units .units__item:hover {
+      background-color: var(--color-contrast-higher);
+      color: var(--color-white);
+                   }
+                                      
+.units__item span {
+      margin: 0;
+      padding: 0;
+      line-height: 1;
+      font-size: 16px;
+      font-weight: 700;
+                 }
+
+.units__item.active {
+      background-color: var(--color-contrast-higher);
+      color: var(--color-white);
+                    }
+
+.card {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  border-radius: var(--radius-md);
+  padding: var(--spasm);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--color-white);
+     }
+
+.card:hover {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 5px 0px;
+            }
+
+.week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: var(--space-xxs); 
+       }
+
+</style>

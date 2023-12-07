@@ -70,4 +70,30 @@
       </div>
   </div>
 </template>
-  
+
+<style>
+.right {
+  background-color: var(--color-bg);
+  padding: var(--space-lg);
+       }
+       
+.card {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  border-radius: var(--radius-md);
+  padding: var(--spasm);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--color-white);
+     }
+
+.card:hover {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 5px 0px;
+            }
+
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: var(--space-base);
+            }
+</style>

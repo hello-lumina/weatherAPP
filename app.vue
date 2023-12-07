@@ -13,5 +13,14 @@
 </script>
 
 <style>
-  /* Cokolwiek, aby działało! */
+* {
+  box-sizing: border-box;
+  }
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-contrast-higher);
+  margin: 0;
+  overflow-x: hidden;
+     }
 </style>
