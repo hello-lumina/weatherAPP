@@ -24,8 +24,8 @@
 <div :class="{ 'today-weather-icon': weatherInfo, 'skeleton-loading-icon': !weatherInfo }">
   <svg v-if="weatherInfo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="200" height="200">
     <path fill="none" d="M0 0h24v24H0z"></path>
-    <path id="myIcon"
-        d="M9.98392 5.05991C11.1323 3.22236 13.1734 2 15.5 2C19.0899 2 22 4.91015 22 8.5C22 9.58031 21.7365 10.5991 21.2701 11.4955C22.3351 12.4985 23 13.9216 23 15.5C23 18.5376 20.5376 21 17.5 21H9C4.58172 21 1 17.4183 1 13C1 8.58172 4.58172 5 9 5C9.33312 5 9.66149 5.02036 9.98392 5.05991ZM12.0554 5.60419C14.0675 6.43637 15.6662 8.06578 16.4576 10.0986C16.7951 10.0339 17.1436 10 17.5 10C18.2351 10 18.9366 10.1442 19.5776 10.4059C19.8486 9.82719 20 9.18128 20 8.5C20 6.01472 17.9853 4 15.5 4C14.1177 4 12.8809 4.6233 12.0554 5.60419ZM17.5 19C19.433 19 21 17.433 21 15.5C21 13.567 19.433 12 17.5 12C16.5205 12 15.6351 12.4023 14.9998 13.0507C14.9999 13.0338 15 13.0169 15 13C15 9.68629 12.3137 7 9 7C5.68629 7 3 9.68629 3 13C3 16.3137 5.68629 19 9 19H17.5Z"
+    <path
+        :d="icon"
         fill="var(--color-bg)"></path>
   </svg>
 </div>
@@ -33,12 +33,12 @@
 <!--      TODO: component-->
 <!--      <div>-->  
 <div :class="{ 'temperature': weatherInfo, 'skeleton-loading-temperature': !weatherInfo }">
-  <span class="temperature__value" v-if="weatherInfo">{{ weatherInfo.current.temp_c }}</span>
+  <span class="temperature__value" v-if="weatherInfo">{{ temperature }}</span>
   <span class="temperature__unit" v-if="weatherInfo">&deg;C</span>
 </div>
 
 <div :class="{ 'date': weatherInfo, 'skeleton-loading-date': !weatherInfo }">
-  <h4 v-if="weatherInfo">{{ dayOfWeek }}, <span class="color-bg-darker">{{ dayHour }}</span></h4>
+  <h4 v-if="weatherInfo">{{ weekDay }}, <span class="color-bg-darker">{{ dayHour }}</span></h4>
 </div>
 <!--      </div>-->
 <!--      TODO: component-->
@@ -49,11 +49,11 @@
   <div :class="{ 'details__single': weatherInfo, 'skeleton-loading-details': !weatherInfo }">
     <svg  v-if="weatherInfo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
       <path fill="none" d="M0 0h24v24H0z"></path>
-      <path id="myPath"
-          d="M9.5 6C5.91015 6 3 8.91015 3 12.5C3 16.0899 5.91015 19 9.5 19H16.5C18.9853 19 21 16.9853 21 14.5C21 12.0147 18.9853 10 16.5 10C16.1717 10 15.8516 10.0352 15.5433 10.1019C14.589 7.69894 12.2429 6 9.5 6ZM16.5 21H9.5C4.80558 21 1 17.1944 1 12.5C1 7.80558 4.80558 4 9.5 4C12.5433 4 15.2131 5.59939 16.7146 8.00348C20.2051 8.11671 23 10.982 23 14.5C23 18.0899 20.0899 21 16.5 21Z"
+      <path
+          :d="icon"
           fill="var(--color-bg-darker)"></path>
     </svg>
-    <p v-if="weatherInfo">{{ weatherName }}</p>
+    <p v-if="weatherInfo">{{ weatherAppearance }}</p>
   </div>
   <div :class="{ 'details__single': weatherInfo, 'skeleton-loading-details': !weatherInfo }">
     <svg v-if="weatherInfo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -62,15 +62,15 @@
           d="M5 16.9297C2.60879 15.5465 1 12.9611 1 10C1 5.58172 4.58172 2 9 2C12.3949 2 15.2959 4.11466 16.4576 7.09864C16.7951 7.0339 17.1436 7 17.5 7C20.5376 7 23 9.46243 23 12.5C23 15.0176 21.3085 17.14 19 17.793V15.6632C20.1825 15.1015 21 13.8962 21 12.5C21 10.567 19.433 9 17.5 9C16.5205 9 15.6351 9.40232 14.9998 10.0507C14.9999 10.0338 15 10.0169 15 10C15 6.68629 12.3137 4 9 4C5.68629 4 3 6.68629 3 10C3 11.777 3.7725 13.3736 5 14.4722V16.9297ZM7 14H9V20H7V14ZM15 14H17V20H15V14ZM11 17H13V23H11V17Z"
           fill="var(--color-bg-darker)"></path>
     </svg>
-    <p v-if="weatherInfo">Szansa na opady deszczu, {{ rainChances }}%</p>
+    <p v-if="weatherInfo">Szansa na opady deszczu, {{ rainSnowChances }}%</p>
   </div>
 </div>
 
 <div :class="{ 'location margin-top-md': weatherInfo, 'skeleton-loading-image': !weatherInfo }">
   <img v-if="weatherInfo" class="location__image"
-       src="https://plus.unsplash.com/premium_photo-1682657000431-84ea0dcf361c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fG5ldyUyMHlvcmslMjBjaXR5fGVufDB8fDB8fHww"
+       :src="image_src"
        alt="Weather App">
-  <h4 class="location__name" v-if="weatherInfo">{{ location }}, {{ country }}, {{ region }}</h4>
+  <h4 class="location__name" v-if="weatherInfo">{{ location }}, {{ country }}</h4>
 </div>
 
 </div>
@@ -80,17 +80,21 @@
 export default {
     data() {
         return{
+            writingLocation: '',
             searchLocation: null,
             weatherInfo: null,
-            weatherName: null,
+            dayorNight: null,
+            temperature: null,
+            weatherAppearance: null,
             location: null,
             country: null,
             region: null,
-            dayOfWeek: null,
+            weekDay: null,
             dayHour: null,
-            rainChances: 0,
-            weatherAppearance: null,
-            writingLocation: '',
+            rainSnowChances: null,
+            imageInfo: null,
+            image_src: null,
+            icon: null,
               };
            },
     methods: {
@@ -121,83 +125,269 @@ export default {
 
           getWeatherInfo(){
             const apiKey = '5601e40046454d11965130257232811';
-            const wheaterApiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${this.searchLocation}`;
+            const wheaterApiUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${this.searchLocation}&days=10&aqi=no&alerts=no`;  
                 fetch(wheaterApiUrl) 
                     .then(response => response.json())
                     .then(info => {
-                        this.weatherInfo = info;
-                        const epochTime = this.weatherInfo.current.last_updated_epoch;
-                        const rain = this.weatherInfo.current.precip_mm;
-                        const chances = rain*100;
-                        const region = this.weatherInfo.location.tz_id;
-                        const city = this.weatherInfo.location.name;
-                          const date = new Date(epochTime * 1000);
-                            const daysOfWeek = ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"];
-                            const hours = date.getHours();
-                            const minutes = date.getMinutes();
-                              this.location = city;
-                              this.dayOfWeek = daysOfWeek[date.getDay()];
-                              this.dayHour = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-                              this.rainChances = chances;
-                              this.country = this.weatherInfo.location.country;
-                              this.region = region.split("/")[0];
+                          this.weatherInfo = info;
+                          this.dayorNight = this.weatherInfo.current.condition.is_day;
+                          this.temperature = this.weatherInfo.current.temp_c; 
+                          this.location = this.weatherInfo.location.name;
+                          this.country = this.weatherInfo.location.country;
+                          this.region= this.weatherInfo.location.tz_id.split("/")[0];
+                            const epochTime = this.weatherInfo.current.last_updated_epoch;
+                              const date = new Date(epochTime * 1000);
+                                const daysOfWeek = ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"];
+                                const hours = date.getHours();
+                                const minutes = date.getMinutes();
+                                  this.weekDay = daysOfWeek[date.getDay()];
+                                  this.dayHour = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+                                        const rainChances = this.weatherInfo.forecast.forecastday[0].day.daily_chance_of_rain;
+                                        const snowChances = this.weatherInfo.forecast.forecastday[0].day.daily_chance_of_snow;
+                                          this.rainSnowChances = snowChances;
+                                            const BigIcon = document.getElementById("myBigIcon");
+                                          switch (this.weatherInfo.current.condition.text) {
+                                                case "Sunny":
+                                                  this.weatherAppearance = "Słonecznie";
+                                                  this.day ="M12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12C18 15.3137 15.3137 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16ZM11 1H13V4H11V1ZM11 20H13V23H11V20ZM3.51472 4.92893L4.92893 3.51472L7.05025 5.63604L5.63604 7.05025L3.51472 4.92893ZM16.9497 18.364L18.364 16.9497L20.4853 19.0711L19.0711 20.4853L16.9497 18.364ZM19.0711 3.51472L20.4853 4.92893L18.364 7.05025L16.9497 5.63604L19.0711 3.51472ZM5.63604 16.9497L7.05025 18.364L4.92893 20.4853L3.51472 19.0711L5.63604 16.9497ZM23 11V13H20V11H23ZM4 11V13H1V11H4Z";
+                                                  this.night ="M10 7C10 10.866 13.134 14 17 14C18.9584 14 20.729 13.1957 21.9995 11.8995C22 11.933 22 11.9665 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C12.0335 2 12.067 2 12.1005 2.00049C10.8043 3.27098 10 5.04157 10 7ZM4 12C4 16.4183 7.58172 20 12 20C15.0583 20 17.7158 18.2839 19.062 15.7621C18.3945 15.9187 17.7035 16 17 16C12.0294 16 8 11.9706 8 7C8 6.29648 8.08133 5.60547 8.2379 4.938C5.71611 6.28423 4 8.9417 4 12Z";
+                                                break;
 
-                        console.log(this.weatherInfo);
+                                                case "Partly cloudy":
+                                                  this.weatherAppearance = "Częściowo pochumrnie";
+                                                  this.day = "M9.98392 5.05991C11.1323 3.22236 13.1734 2 15.5 2C19.0899 2 22 4.91015 22 8.5C22 9.58031 21.7365 10.5991 21.2701 11.4955C22.3351 12.4985 23 13.9216 23 15.5C23 18.5376 20.5376 21 17.5 21H9C4.58172 21 1 17.4183 1 13C1 8.58172 4.58172 5 9 5C9.33312 5 9.66149 5.02036 9.98392 5.05991ZM12.0554 5.60419C14.0675 6.43637 15.6662 8.06578 16.4576 10.0986C16.7951 10.0339 17.1436 10 17.5 10C18.2351 10 18.9366 10.1442 19.5776 10.4059C19.8486 9.82719 20 9.18128 20 8.5C20 6.01472 17.9853 4 15.5 4C14.1177 4 12.8809 4.6233 12.0554 5.60419ZM17.5 19C19.433 19 21 17.433 21 15.5C21 13.567 19.433 12 17.5 12C16.5205 12 15.6351 12.4023 14.9998 13.0507C14.9999 13.0338 15 13.0169 15 13C15 9.68629 12.3137 7 9 7C5.68629 7 3 9.68629 3 13C3 16.3137 5.68629 19 9 19H17.5Z";
+                                                  this.night = "M8.67047 5.00666C9.79257 2.63812 12.205 1 15 1C15.4162 1 15.8239 1.03632 16.2201 1.10596C16.0772 1.54488 16 2.01342 16 2.5C16 4.98528 18.0147 7 20.5 7C20.9866 7 21.4551 6.92277 21.894 6.77991C21.9637 7.17612 22 7.58382 22 8C22 9.2228 21.6865 10.3724 21.1354 11.3727C22.2787 12.3806 23 13.856 23 15.5C23 18.5376 20.5376 21 17.5 21H9C4.58172 21 1 17.4183 1 13C1 8.6921 4.405 5.17948 8.67047 5.00666ZM10.8473 5.21433C13.4205 5.82257 15.5135 7.67351 16.4576 10.0986C16.7951 10.0339 17.1436 10 17.5 10C18.1745 10 18.8207 10.1214 19.4179 10.3436C19.6433 9.91944 19.8095 9.45894 19.9054 8.97316C16.79 8.69062 14.3094 6.20996 14.0268 3.09465C12.7061 3.35519 11.5722 4.13582 10.8473 5.21433ZM17.5 19C19.433 19 21 17.433 21 15.5C21 13.567 19.433 12 17.5 12C16.5205 12 15.6351 12.4023 14.9998 13.0507C14.9999 13.0338 15 13.0169 15 13C15 9.68629 12.3137 7 9 7C5.68629 7 3 9.68629 3 13C3 16.3137 5.68629 19 9 19H17.5Z";
+                                                break;
 
-                        const pathIcon = document.getElementById("myIcon")
-                        const pathElement = document.getElementById("myPath")
+                                                case "Cloudy":
+                                                  this.weatherAppearance = "Pochmurnie";
+                                                  this.day ="M9.98392 5.05991C11.1323 3.22236 13.1734 2 15.5 2C19.0899 2 22 4.91015 22 8.5C22 9.58031 21.7365 10.5991 21.2701 11.4955C22.3351 12.4985 23 13.9216 23 15.5C23 18.5376 20.5376 21 17.5 21H9C4.58172 21 1 17.4183 1 13C1 8.58172 4.58172 5 9 5C9.33312 5 9.66149 5.02036 9.98392 5.05991ZM12.0554 5.60419C14.0675 6.43637 15.6662 8.06578 16.4576 10.0986C16.7951 10.0339 17.1436 10 17.5 10C18.2351 10 18.9366 10.1442 19.5776 10.4059C19.8486 9.82719 20 9.18128 20 8.5C20 6.01472 17.9853 4 15.5 4C14.1177 4 12.8809 4.6233 12.0554 5.60419Z";
+                                                  this.night ="M8.67047 5.00666C9.79257 2.63812 12.205 1 15 1C15.4162 1 15.8239 1.03632 16.2201 1.10596C16.0772 1.54488 16 2.01342 16 2.5C16 4.98528 18.0147 7 20.5 7C20.9866 7 21.4551 6.92277 21.894 6.77991C21.9637 7.17612 22 7.58382 22 8C22 9.2228 21.6865 10.3724 21.1354 11.3727C22.2787 12.3806 23 13.856 23 15.5C23 18.5376 20.5376 21 17.5 21H9C4.58172 21 1 17.4183 1 13C1 8.6921 4.405 5.17948 8.67047 5.00666ZM10.8473 5.21433C13.4205 5.82257 15.5135 7.67351 16.4576 10.0986C16.7951 10.0339 17.1436 10 17.5 10C18.1745 10 18.8207 10.1214 19.4179 10.3436C19.6433 9.91944 19.8095 9.45894 19.9054 8.97316C16.79 8.69062 14.3094 6.20996 14.0268 3.09465C12.7061 3.35519 11.5722 4.13582 10.8473 5.21433Z";
+                                                break;
 
-                          if(info.current.condition.text == "Sunny") {
-                            this.weatherName = "Słonecznie";
-                            const newDValue = "M12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12C18 15.3137 15.3137 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16ZM11 1H13V4H11V1ZM11 20H13V23H11V20ZM3.51472 4.92893L4.92893 3.51472L7.05025 5.63604L5.63604 7.05025L3.51472 4.92893ZM16.9497 18.364L18.364 16.9497L20.4853 19.0711L19.0711 20.4853L16.9497 18.364ZM19.0711 3.51472L20.4853 4.92893L18.364 7.05025L16.9497 5.63604L19.0711 3.51472ZM5.63604 16.9497L7.05025 18.364L4.92893 20.4853L3.51472 19.0711L5.63604 16.9497ZM23 11V13H20V11H23ZM4 11V13H1V11H4Z";
-                            const newFillvalue = "rgba(255,168,0,1)";
-                              pathElement.setAttribute("d", newDValue);
-                              pathIcon.setAttribute("d", newDValue);
-                              pathIcon.setAttribute("fill", newFillvalue);
-                                                                     } 
+                                                case "Overcast":
+                                                this.weatherAppearance = "Zachmurzenie";
+                                                this.day = "M12 2C15.866 2 19 5.13401 19 9C19 9.11351 18.9973 9.22639 18.992 9.33857C21.3265 10.16 23 12.3846 23 15C23 18.3137 20.3137 21 17 21H7C3.68629 21 1 18.3137 1 15C1 12.3846 2.67346 10.16 5.00804 9.33857C5.0027 9.22639 5 9.11351 5 9C5 5.13401 8.13401 2 12 2ZM12 4C9.23858 4 7 6.23858 7 9C7 9.08147 7.00193 9.16263 7.00578 9.24344L7.07662 10.7309L5.67183 11.2252C4.0844 11.7837 3 13.2889 3 15C3 17.2091 4.79086 19 7 19H17C19.2091 19 21 17.2091 21 15C21 12.79 19.21 11 17 11C15.233 11 13.7337 12.1457 13.2042 13.7347L11.3064 13.1021C12.1005 10.7185 14.35 9 17 9C17 6.23858 14.7614 4 12 4Z";
+                                                this.night = "M12 2C15.866 2 19 5.13401 19 9C19 9.11351 18.9973 9.22639 18.992 9.33857C21.3265 10.16 23 12.3846 23 15C23 18.3137 20.3137 21 17 21H7C3.68629 21 1 18.3137 1 15C1 12.3846 2.67346 10.16 5.00804 9.33857C5.0027 9.22639 5 9.11351 5 9C5 5.13401 8.13401 2 12 2ZM12 4C9.23858 4 7 6.23858 7 9C7 9.08147 7.00193 9.16263 7.00578 9.24344L7.07662 10.7309L5.67183 11.2252C4.0844 11.7837 3 13.2889 3 15C3 17.2091 4.79086 19 7 19H17C19.2091 19 21 17.2091 21 15C21 12.79 19.21 11 17 11C15.233 11 13.7337 12.1457 13.2042 13.7347L11.3064 13.1021C12.1005 10.7185 14.35 9 17 9C17 6.23858 14.7614 4 12 4Z";
+                                                break;
 
-                          else if(info.current.condition.text == "Partly cloudy") {
-                            this.weatherName = "Częściowe zachmurzenie"
-                            const newDValue = "M9.98392 5.05991C11.1323 3.22236 13.1734 2 15.5 2C19.0899 2 22 4.91015 22 8.5C22 9.58031 21.7365 10.5991 21.2701 11.4955C22.3351 12.4985 23 13.9216 23 15.5C23 18.5376 20.5376 21 17.5 21H9C4.58172 21 1 17.4183 1 13C1 8.58172 4.58172 5 9 5C9.33312 5 9.66149 5.02036 9.98392 5.05991ZM12.0554 5.60419C14.0675 6.43637 15.6662 8.06578 16.4576 10.0986C16.7951 10.0339 17.1436 10 17.5 10C18.2351 10 18.9366 10.1442 19.5776 10.4059C19.8486 9.82719 20 9.18128 20 8.5C20 6.01472 17.9853 4 15.5 4C14.1177 4 12.8809 4.6233 12.0554 5.60419Z";
-                            const newFillvalue = "rgba(70,146,221,1)";
-                              pathElement.setAttribute("d", newDValue);
-                              pathIcon.setAttribute("d", newDValue);
-                                                                                  }
+                                                case "Mist":
+                                                  this.weatherAppearance = "Mgliście";
+                                                  this.day = "M4 4H8V6H4V4ZM16 19H20V21H16V19ZM2 9H7V11H2V9ZM9 9H12V11H9V9ZM14 9H20V11H14V9ZM4 14H10V16H4V14ZM12 14H15V16H12V14ZM17 14H22V16H17V14ZM10 4H22V6H10V4ZM2 19H14V21H2V19Z";
+                                                  this.night = "M4 4H8V6H4V4ZM16 19H20V21H16V19ZM2 9H7V11H2V9ZM9 9H12V11H9V9ZM14 9H20V11H14V9ZM4 14H10V16H4V14ZM12 14H15V16H12V14ZM17 14H22V16H17V14ZM10 4H22V6H10V4ZM2 19H14V21H2V19Z";
+                                                break;
 
-                          else if(info.current.condition.text == "Overcast") {
-                            this.weatherName = "Pochmurno"
-                            const newDValue = "M12 2C15.866 2 19 5.13401 19 9C19 9.11351 18.9973 9.22639 18.992 9.33857C21.3265 10.16 23 12.3846 23 15C23 18.3137 20.3137 21 17 21H7C3.68629 21 1 18.3137 1 15C1 12.3846 2.67346 10.16 5.00804 9.33857C5.0027 9.22639 5 9.11351 5 9C5 5.13401 8.13401 2 12 2ZM12 4C9.23858 4 7 6.23858 7 9C7 9.08147 7.00193 9.16263 7.00578 9.24344L7.07662 10.7309L5.67183 11.2252C4.0844 11.7837 3 13.2889 3 15C3 17.2091 4.79086 19 7 19H17C19.2091 19 21 17.2091 21 15C21 12.79 19.21 11 17 11C15.233 11 13.7337 12.1457 13.2042 13.7347L11.3064 13.1021C12.1005 10.7185 14.35 9 17 9C17 6.23858 14.7614 4 12 4Z";
-                              pathElement.setAttribute("d", newDValue);
-                                                                             }
+                                                case "Patchy rain possible":
+                                                  this.weatherAppearance = "Możliwe przelotne opady deszczu";
+                                                  this.day = "M16 18V16H17C19.2091 16 21 14.2091 21 12C21 9.79086 19.2091 8 17 8C16.2057 8 15.4654 8.23153 14.8431 8.63079C14.2236 5.97685 11.8427 4 9 4C5.68629 4 3 6.68629 3 10C3 12.973 5.16229 15.441 8 15.917V17.9381C4.05369 17.446 1 14.0796 1 10C1 5.58172 4.58172 2 9 2C11.9967 2 14.6086 3.64768 15.9791 6.08651C16.3109 6.02963 16.652 6 17 6C20.3137 6 23 8.68629 23 12C23 15.3137 20.3137 18 17 18H16ZM10.2322 18.7322L12 16.9645L13.7678 18.7322C14.7441 19.7085 14.7441 21.2915 13.7678 22.2678C12.7915 23.2441 11.2085 23.2441 10.2322 22.2678C9.25592 21.2915 9.25592 19.7085 10.2322 18.7322Z";
+                                                  this.night = "M16 18V16H17C19.2091 16 21 14.2091 21 12C21 9.79086 19.2091 8 17 8C16.2057 8 15.4654 8.23153 14.8431 8.63079C14.2236 5.97685 11.8427 4 9 4C5.68629 4 3 6.68629 3 10C3 12.973 5.16229 15.441 8 15.917V17.9381C4.05369 17.446 1 14.0796 1 10C1 5.58172 4.58172 2 9 2C11.9967 2 14.6086 3.64768 15.9791 6.08651C16.3109 6.02963 16.652 6 17 6C20.3137 6 23 8.68629 23 12C23 15.3137 20.3137 18 17 18H16ZM10.2322 18.7322L12 16.9645L13.7678 18.7322C14.7441 19.7085 14.7441 21.2915 13.7678 22.2678C12.7915 23.2441 11.2085 23.2441 10.2322 22.2678C9.25592 21.2915 9.25592 19.7085 10.2322 18.7322Z";
+                                                break;
 
-                          else if(info.current.condition.text == "Light snow") {
-                            this.weatherName = "Lekkie opady śniegu"
-                            const newDValue = "M13 16.268L14.9641 15.134L15.9641 16.866L14 18L15.9641 19.134L14.9641 20.866L13 19.732V22H11V19.732L9.0359 20.866L8.0359 19.134L10 18L8.0359 16.866L9.0359 15.134L11 16.268V14H13V16.268ZM17 18V16H17.5C19.433 16 21 14.433 21 12.5C21 10.567 19.433 9 17.5 9C16.5205 9 15.6351 9.40232 14.9998 10.0507C14.9999 10.0338 15 10.0169 15 10C15 6.68629 12.3137 4 9 4C5.68629 4 3 6.68629 3 10C3 12.6124 4.66962 14.8349 7 15.6586V17.748C3.54955 16.8599 1 13.7277 1 10C1 5.58172 4.58172 2 9 2C12.3949 2 15.2959 4.11466 16.4576 7.09864C16.7951 7.0339 17.1436 7 17.5 7C20.5376 7 23 9.46243 23 12.5C23 15.5376 20.5376 18 17.5 18H17Z"
-                            const newFillvalue = "rgba(70,146,221,1)";
-                              pathElement.setAttribute("d", newDValue);
-                              pathIcon.setAttribute("d", newDValue);
-                              pathIcon.setAttribute("fill", newFillvalue);
-                                                                               }
-                                                                              
-                          else if(info.current.condition.text == "Clear") {
-                            this.weatherName = "Bezchmurnie"
-                            const newDValue = "M10 6C10 10.4183 13.5817 14 18 14C19.4386 14 20.7885 13.6203 21.9549 12.9556C21.4738 18.0302 17.2005 22 12 22C6.47715 22 2 17.5228 2 12C2 6.79948 5.9698 2.52616 11.0444 2.04507C10.3797 3.21152 10 4.56142 10 6ZM4 12C4 16.4183 7.58172 20 12 20C14.9654 20 17.5757 18.3788 18.9571 15.9546C18.6407 15.9848 18.3214 16 18 16C12.4772 16 8 11.5228 8 6C8 5.67863 8.01524 5.35933 8.04536 5.04293C5.62119 6.42426 4 9.03458 4 12ZM18.1642 2.29104L19 2.5V3.5L18.1642 3.70896C17.4476 3.8881 16.8881 4.4476 16.709 5.16417L16.5 6H15.5L15.291 5.16417C15.1119 4.4476 14.5524 3.8881 13.8358 3.70896L13 3.5V2.5L13.8358 2.29104C14.5524 2.1119 15.1119 1.5524 15.291 0.835829L15.5 0H16.5L16.709 0.835829C16.8881 1.5524 17.4476 2.1119 18.1642 2.29104ZM23.1642 7.29104L24 7.5V8.5L23.1642 8.70896C22.4476 8.8881 21.8881 9.4476 21.709 10.1642L21.5 11H20.5L20.291 10.1642C20.1119 9.4476 19.5524 8.8881 18.8358 8.70896L18 8.5V7.5L18.8358 7.29104C19.5524 7.1119 20.1119 6.5524 20.291 5.83583L20.5 5H21.5L21.709 5.83583C21.8881 6.5524 22.4476 7.1119 23.1642 7.29104Z"
-                              pathElement.setAttribute("d", newDValue);
+                                                case "Patchy snow possible":
+                                                  this.weatherAppearance = " Możliwe przelotne opady śniegu";
+                                                  this.day = "";
+                                                  this.night = "";
+                                                break;
+
+                                                case "Patchy sleet possible":
+                                                  this.weatherAppearance = "Możliwe przelotne opady deszczu, ze śniegiem";
+                                                break;
+
+                                                case "Patchy freezing drizzle possible":
+                                                  this.weatherAppearance = "Możliwe przelotne mżawki";
+                                                break;
+
+                                                case "Thundery outbreaks possible":
+                                                  
+                                                break;
+
+                                                case "Blowing snow":
+                                                  this.weatherAppearance = "Zamieć śnieżna";  
+                                                break;
+
+                                                case "Blizzard":
+                                                  this.weatherAppearance = "Zamieć śnieżna z dużymi opadami";
+                                                break;
+
+                                                case "Fog":
+                                                  this.weatherAppearance = "Mgła";
+                                                break;
+                                                  
+                                                case "Freezing fog":
+                                                this.weatherAppearance = "Marznąca mgła";
+                                                break;
+
+                                                case "Patchy light drizzle":
+                                                  this.weatherAppearance = "Przelotne niewielkie opady mżawki";
+                                                break;
+
+                                                case "Light drizzle":
+                                                  this.weatherAppearance = "Lekka mżawka";
+                                                break;
+
+                                                case "Freezing drizzle":
+                                                  this.weatherAppearance = "Marznąca mżawka ";
+                                                break;
+
+                                                case "Heavy freezing drizzle":
+                                                this.weatherAppearance = "Intensywna marznąca mżawka"; 
+                                                break;
+
+                                                case "Patchy light rain":
+                                                  this.weatherAppearance = "Przelotne, niewielkie opady deszczu";
+                                                break;
+
+                                                case "Light rain":
+                                                  this.weatherAppearance = "Lekkie opady deszczu";
+                                                break;
+
+                                                case "Moderate rain at times":
+                                                this.weatherAppearance = "Możliwe umiarkowane opady deszczu";
+                                                break;
+
+                                                case "Moderate rain":
+                                                  this.weatherAppearance = "Umiarkowane opady deszczu";
+                                                break;
+
+                                                case "Heavy rain at times":
+                                                  this.weatherAppearance = "Możliwe intensywne opady deszczu";
+                                                break;
+                                                  
+                                                case "Heavy rain":
+                                                this.weatherAppearance = "Intensywne opady deszczu"; 
+                                                break;
+
+                                                case "Light freezing rain":
+                                                  this.weatherAppearance = "Lekkie marznące opady deszczu";
+                                                break;
+
+                                                case "Moderate or heavy freezing rain":
+                                                this.weatherAppearance = "Umiarkowany lub silny marznący deszcz"; 
+                                                break;
+
+                                                case "Light sleet":
+                                                  this.weatherAppearance = "Lekki deszcz ze śniegiem";
+                                                break;
+
+                                                case "Moderate or heavy sleet":
+                                                  this.weatherAppearance = "Umiarkowane lub intensywne opady deszczu ze śniegiem";
+                                                break;
+
+                                                case "Patchy light snow":
+                                                this.weatherAppearance = "Niejednolite, lekkie opady śniegu";
+                                                break;
+
+                                                case "Light snow":
+                                                  this.weatherAppearance = "Lekkie opady śniegu";
+                                                  this.day = "";
+                                                  this.night = "";
+                                                break;
+
+                                                case "Patchy moderate snow":
+                                                  this.weatherAppearance = "Przelotne, umiarkowane opady śniegu";
+                                                break;
+                                                  
+                                                case "Moderate snow":
+                                                this.weatherAppearance = "Umiarkowane opady śniegu"; 
+                                                break;
+
+                                                case "Patchy heavy snow":
+                                                  this.weatherAppearance = "";
+                                                break;
+
+                                                case "Heavy snow":
+                                                this.weatherAppearance = ""; 
+                                                break;
+
+                                                case "Ice pellets":
+                                                  this.weatherAppearance = "";
+                                                break;
+
+                                                case "Light rain shower":
+                                                  this.weatherAppearance = "";
+                                                break;
+
+                                                case "Moderate or heavy rain shower":
+                                                this.weatherAppearance = "";
+                                                break;
+
+                                                case "Torrential rain shower":
+                                                  this.weatherAppearance = "";
+                                                break;
+
+                                                case "Light sleet showers":
+                                                  this.weatherAppearance = "";
+                                                break;
+                                                  
+                                                case "Moderate or heavy sleet showers":
+                                                this.weatherAppearance = ""; 
+                                                break;
+
+                                                case "Light snow showers":
+                                                  this.weatherAppearance = "";
+                                                break;
+
+                                                case "Moderate or heavy snow showers":
+                                                this.weatherAppearance = ""; 
+                                                break;
+
+                                                case "Light showers of ice pellets":
+                                                  this.weatherAppearance = "";
+                                                break;
+
+                                                case "Moderate or heavy showers of ice pellets":
+                                                  this.weatherAppearance = "";
+                                                break;
+
+                                                case "Patchy light rain with thunder":
+                                                this.weatherAppearance = "";
+                                                break;
+
+                                                case "Moderate or heavy rain with thunder":
+                                                  this.weatherAppearance = "";
+                                                break;
+
+                                                case "Patchy light snow with thunder":
+                                                  this.weatherAppearance = "";
+                                                break;
+                                                  
+                                                case "Moderate or heavy snow with thunder":
+                                                this.weatherAppearance = ""; 
+                                                break;
+                                                                                 }
+                                                  if(this.dayorNight = 1) {
+                                                    this.icon = this.day;
                                                                           }
-                                                                        
-                          else if(info.current.condition.text == "Cloudy") {
-                            this.weatherName = "Pochmurnie"
-                            const newDValue = "M9.5 6C5.91015 6 3 8.91015 3 12.5C3 16.0899 5.91015 19 9.5 19H16.5C18.9853 19 21 16.9853 21 14.5C21 12.0147 18.9853 10 16.5 10C16.1717 10 15.8516 10.0352 15.5433 10.1019C14.589 7.69894 12.2429 6 9.5 6ZM16.5 21H9.5C4.80558 21 1 17.1944 1 12.5C1 7.80558 4.80558 4 9.5 4C12.5433 4 15.2131 5.59939 16.7146 8.00348C20.2051 8.11671 23 10.982 23 14.5C23 18.0899 20.0899 21 16.5 21Z"
-                              pathElement.setAttribute("d", newDValue);
-                                                                          }  
-                                  });
+                                                  else {
+                                                    this.icon = night;
+                                                       }
+                                                console.log(this.weatherInfo);
+                                });
                       },
 
           getStreetViewImage() {
+            const imageApi = `https://api.teleport.org/api/cities?search=${this.searchLocation}`
+              fetch(imageApi) 
+                    .then(response => response.json())
+                    .then(data => {
+                      const locationGeonemId = data["_embedded"]["city:search-results"][0]._links["city:item"].href;
 
-                               },
-             },
-               };
+                        fetch(locationGeonemId)
+                          .then(response => response.json())
+                          .then(area => {
+                            const urbanAreaUrl = area["_links"]["city:urban_area"].href+"images/";
+
+                              fetch(urbanAreaUrl)
+                                .then(response => response.json())
+                                .then (image => {
+                                  this.image_src = image["photos"][0].image.web;
+                                                })
+                                         })
+                                   });
+                            
+               }
+            }
+        }
 </script>
 <style>
 .left {
@@ -398,5 +588,5 @@ export default {
   to {
     opacity: 1;
      }
-}
+                          }
 </style>
