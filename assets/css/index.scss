@@ -1,3 +1,5 @@
+@use 'main-style';
+
 @use '../luminaFrame/index' with (
   $breakpoints: (
     'xs': 32rem, // ~512px
