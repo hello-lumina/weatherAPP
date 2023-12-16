@@ -1,5 +1,5 @@
 <template>
-  <div class="col-3@md left">
+  <div>
     <div class="search">
       <div class="search__input">
         <svg class="search__input--icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"

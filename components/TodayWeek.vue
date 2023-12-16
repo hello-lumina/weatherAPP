@@ -3,6 +3,17 @@
     <Header @set-active="setActiveC"/>
 
     <div class="week margin-top-xl">
+      <SkeletonCard v-if="!weatherInfo" v-for="index in 7" :key="index"/>
+      <Card
+          v-else
+          v-for="forecast in weatherInfo.forecast.forecastday"
+          v-bind="forecast"
+      />
+
+
+
+
+
       <div :class="{ 'card': weatherInfo, 'skeleton-loading-card': !weatherInfo }">
         <p v-if="weatherInfo">{{ dayOne }}</p>
         <svg v-if="weatherInfo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="60" height="60">
@@ -169,7 +180,7 @@ export default {
       this.activeUnits = 'F';
       this.temperatureSign = 'F',
 
-      this.minTemperatureOne = this.weatherInfo.forecast.forecastday[1].day.mintemp_f;
+          this.minTemperatureOne = this.weatherInfo.forecast.forecastday[1].day.mintemp_f;
       this.maxTemperatureOne = this.weatherInfo.forecast.forecastday[1].day.maxtemp_f;
 
       this.minTemperatureTwo = this.weatherInfo.forecast.forecastday[2].day.mintemp_f;
@@ -245,10 +256,6 @@ export default {
   display: flex;
   flex-direction: column;
   animation: pulseAnimation .8s infinite alternate;
-}
-
-.skeleton-loading-card:hover {
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 5px 0px;
 }
 
 @keyframes pulseAnimation {

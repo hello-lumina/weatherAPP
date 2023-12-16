@@ -1,5 +1,3 @@
-@use 'main-style';
-
 @use '../luminaFrame/index' with (
   $breakpoints: (
     'xs': 32rem, // ~512px
@@ -10,3 +8,5 @@
   ),
   $grid-columns: 12
 );
+
+@import 'main-style';
