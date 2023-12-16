@@ -1,16 +1,13 @@
 <template>
   <div>
-    <Header @set-active="setActiveC"/>
-
     <div class="week margin-top-xl">
       <SkeletonCard v-if="!weatherInfo" v-for="index in 7" :key="index"/>
       <Card
           v-else
           v-for="forecast in weatherInfo.forecast.forecastday"
           v-bind="forecast"
+          :unit="unit"
       />
-
-
 
 
 
@@ -97,6 +94,14 @@
 import {switchFunction} from '../components/Setup.js'
 
 export default {
+  props: {
+    weatherInfo: Object,
+    unit: {
+      type: Object,
+      required: true
+    }
+  },
+
   data() {
     return {
       activeUnits: 'C',
@@ -141,9 +146,6 @@ export default {
     }
   },
 
-  props: {
-    weatherInfo: Object,
-  },
 
   methods: {
     setActiveC() {

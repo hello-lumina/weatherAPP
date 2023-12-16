@@ -1,8 +1,8 @@
 <template>
   <div class="header">
     <div class="nav">
-      <p class="nav__item">Dziś</p>
-      <p class="nav__item active">Cały tydzień</p>
+      <p @click="setInterval('today')" class="nav__item" :class="{'nav__item active': interval === 'today'}">Dziś</p>
+      <p @click="setInterval('week')" class="nav__item" :class="{'nav__item active': interval === 'week'}">Cały tydzień</p>
     </div>
 
     <div class="units">
@@ -22,19 +22,25 @@
 import {ref, defineComponent} from 'vue';
 
 export default defineComponent({
-  props: ['activeUnits'],
-
   setup(props, {emit}) {
     const unit = ref('C');
+    const interval = ref('week');
 
     const setActive = (selectedUnit) => {
       unit.value = selectedUnit;
-      emit('setActive', selectedUnit);
+      emit('setUnit', selectedUnit);
     };
+
+    const setInterval = (selectedInterval) => {
+      interval.value = selectedInterval
+      emit('setInterval', selectedInterval);
+    }
 
     return {
       setActive,
-      unit
+      unit,
+      interval,
+      setInterval
     };
   },
 });

@@ -5,7 +5,10 @@
       <SearchBar @data-fetched="DataFetched" :sign="sign" :temperature="temperature" ref="SearchBar"/>
     </div>
     <div class="col-9@sm right">
-      <TodayWeek @change-sign-C="ChangeSignC" @change-sign-F="ChangeSignF" :weatherInfo="weatherInfo" ref="TodayWeek"/>
+      <Header @set-unit="setUnit" @set-interval="setInterval"/>
+      <Week v-if="interval === 'week'" @change-sign-C="ChangeSignC" @change-sign-F="ChangeSignF" :weatherInfo="weatherInfo" ref="TodayWeek" :unit="unit"/>
+      <Today v-else :unit="unit"/>
+
       <Higlights :weatherInfo="weatherInfo" ref="Highlights"/>
     </div>
   </div>
@@ -13,25 +16,34 @@
 
 <script>
 import SearchBar from '../components/SearchBar.vue';
-import TodayWeek from '../components/TodayWeek.vue';
+import Week from '../components/Week.vue';
 import Higlights from '../components/Higlights.vue';
 
 export default {
   components: {
     SearchBar,
-    TodayWeek,
+    Week,
     Higlights,
   },
 
   data() {
     return {
+      interval: 'week',
+      unit: 'C',
       weatherInfo: null,
+
       sign: 'F',
       temperature: null
     };
   },
 
   methods: {
+    setInterval(interval){
+      this.interval = interval
+    },
+    setUnit(unit){
+      this.unit = unit
+    },
     DataFetched(info) {
       this.weatherInfo = info;
       this.$nextTick(() => {
