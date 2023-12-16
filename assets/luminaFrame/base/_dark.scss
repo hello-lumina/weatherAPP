@@ -1,0 +1,18 @@
+@use './mixins' as *;
+
+[data-theme="dark"] {
+  @include defineColorHSL(--color-black, 0%, 0%, 100%);
+  @include defineColorHSL(--color-white, 0, 0%, 20%);
+
+  @include defineColorHSL(--color-bg-darker, 0, 0%, 65%);
+  @include defineColorHSL(--color-bg-dark, 0, 0%, 55%);
+  @include defineColorHSL(--color-bg, 0, 0%, 10%);
+  @include defineColorHSL(--color-bg-light, 0, 0%, 11%);
+  @include defineColorHSL(--color-bg-lighter, 0, 0%, 13%);
+
+  @include defineColorHSL(--color-contrast-lower, 0, 0%, 80%);
+  @include defineColorHSL(--color-contrast-low, 0, 0%, 85%);
+  @include defineColorHSL(--color-contrast, 0, 0%, 85%);
+  @include defineColorHSL(--color-contrast-high, 0, 0%, 87%);
+  @include defineColorHSL(--color-contrast-higher, 0, 0%, 89%);
+}

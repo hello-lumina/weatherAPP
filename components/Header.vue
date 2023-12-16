@@ -6,6 +6,8 @@
     </div>
 
     <div class="units">
+      <DarkMode/>
+
       <div @click="setActive('F')" class="units__item" :class="{'units__item active': unit === 'F'}">
         <span>&deg;F</span>
       </div>
@@ -17,12 +19,12 @@
 </template>
 
 <script>
-import { ref, defineComponent } from 'vue';
+import {ref, defineComponent} from 'vue';
 
 export default defineComponent({
   props: ['activeUnits'],
 
-  setup(props, { emit }) {
+  setup(props, {emit}) {
     const unit = ref('C');
 
     const setActive = (selectedUnit) => {
