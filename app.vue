@@ -2,14 +2,14 @@
   <div class="grid gap-md">
     <title>Pogoda</title>
     <div class="col-3@sm left">
-      <SearchBar @data-fetched="DataFetched" :sign="sign" :temperature="temperature" ref="SearchBar"/>
+      <SearchBar @data-fetched="dataFetched" :sign="unit" :temperature="temperature" ref="SearchBar"/>
     </div>
     <div class="col-9@sm right">
       <Header @set-unit="setUnit" @set-interval="setInterval"/>
       <Week v-if="interval === 'week'" :weatherInfo="weatherInfo" ref="TodayWeek" :unit="unit"/>
       <Today v-else :unit="unit" :weatherInfo="weatherInfo"/>
 
-      <Higlights :weatherInfo="weatherInfo" ref="Highlights"/>
+      <Highlights :weatherInfo="weatherInfo" ref="Highlights"/>
     </div>
   </div>
 </template>
@@ -17,13 +17,13 @@
 <script>
 import SearchBar from '../components/SearchBar.vue';
 import Week from '../components/Week.vue';
-import Higlights from '../components/Higlights.vue';
+import Highlights from '../components/Higlights.vue';
 
 export default {
   components: {
     SearchBar,
     Week,
-    Higlights,
+    Highlights,
   },
 
   data() {
@@ -31,8 +31,6 @@ export default {
       interval: 'week',
       unit: 'C',
       weatherInfo: null,
-
-      sign: 'F',
       temperature: null
     };
   },
@@ -44,7 +42,7 @@ export default {
     setUnit(unit){
       this.unit = unit
     },
-    DataFetched(info) {
+    dataFetched(info) {
       this.weatherInfo = info;
       this.$nextTick(() => {
         this.$refs.TodayWeek.days();
