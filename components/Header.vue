@@ -2,7 +2,7 @@
   <div class="header">
     <div class="nav">
       <p @click="setInterval('today')" class="nav__item" :class="{'nav__item active': interval === 'today'}">Dziś</p>
-      <p @click="setInterval('week')" class="nav__item" :class="{'nav__item active': interval === 'week'}">Cały tydzień</p>
+      <p @click="setInterval('week')" class="nav__item" :class="{'nav__item active': interval === 'week'}">Długoterminowo</p>
     </div>
 
     <div class="units">

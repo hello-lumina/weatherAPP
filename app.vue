@@ -6,8 +6,8 @@
     </div>
     <div class="col-9@sm right">
       <Header @set-unit="setUnit" @set-interval="setInterval"/>
-      <Week v-if="interval === 'week'" @change-sign-C="ChangeSignC" @change-sign-F="ChangeSignF" :weatherInfo="weatherInfo" ref="TodayWeek" :unit="unit"/>
-      <Today v-else :unit="unit"/>
+      <Week v-if="interval === 'week'" :weatherInfo="weatherInfo" ref="TodayWeek" :unit="unit"/>
+      <Today v-else :unit="unit" :weatherInfo="weatherInfo"/>
 
       <Higlights :weatherInfo="weatherInfo" ref="Highlights"/>
     </div>
@@ -52,14 +52,6 @@ export default {
         this.$refs.Highlights.highlights();
       });
     },
-
-    ChangeSignC() {
-      this.sign = 'C';
-    },
-
-    ChangeSignF() {
-      this.sign = 'F';
-    }
   },
 };
 </script>

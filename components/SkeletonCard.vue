@@ -3,9 +3,7 @@
 </script>
 
 <template>
-  <div class="skeleton-loading-card">
-
-  </div>
+  <div class="skeleton-loading-card"></div>
 </template>
 
 <style  lang="scss">

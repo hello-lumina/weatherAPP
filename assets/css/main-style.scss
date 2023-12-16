@@ -49,6 +49,7 @@ body {
   &__aim {
     background-color: var(--color-bg);
     border-radius: 50%;
+    min-width: 40px;
     width: 40px;
     height: 40px;
     display: grid;

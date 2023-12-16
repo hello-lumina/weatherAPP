@@ -11,6 +11,7 @@
 
 
 
+
       <div :class="{ 'card': weatherInfo, 'skeleton-loading-card': !weatherInfo }">
         <p v-if="weatherInfo">{{ dayOne }}</p>
         <svg v-if="weatherInfo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="60" height="60">
@@ -97,7 +98,7 @@ export default {
   props: {
     weatherInfo: Object,
     unit: {
-      type: Object,
+      type: String,
       required: true
     }
   },

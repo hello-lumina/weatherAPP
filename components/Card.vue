@@ -5,7 +5,7 @@ export default {
   methods: {getIcon},
   props: {
     unit: {
-      type: Object,
+      type: String,
       required: true
     },
     astro: {
@@ -28,7 +28,9 @@ export default {
 
 <template>
   <div class="card">
-    <p>{{ date }}</p>
+    <p class="color-bg-darker">{{ date }}</p>
+
+<!--    <img :src="this.day.condition.icon" alt="">-->
 
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="60" height="60">
       <path fill="none" d="M0 0h24v24H0z"></path>
